@@ -1,6 +1,7 @@
+import ProductCartd from "./components/productCard"
 const Homepage = () => {
   return (
-    <div className="">Homepage</div>
+    <div className=""></div>
   )
 }
 
