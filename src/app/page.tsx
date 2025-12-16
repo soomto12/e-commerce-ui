@@ -1,7 +1,10 @@
-import ProductCartd from "./components/productCard"
+import ProductList from "./components/productList"
+
 const Homepage = () => {
   return (
-    <div className=""></div>
+    <div className="">
+      <ProductList/>
+    </div>
   )
 }
 

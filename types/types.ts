@@ -7,3 +7,4 @@ sizes : string[],
 colors: string[],
 images: Record<string, string>
 }
+
