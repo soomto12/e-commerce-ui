@@ -1,27 +1,29 @@
+"use client"
+
 import React from "react"
 import { productTypes } from "../../../types/types"
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
 
-const ProductCard : React.FC <productTypes> = ({id, name,shortDescription, sizes, colors, images, price,   })=>{
+const ProductCard : React.FC <productTypes> = ({id, name, shortDescription, description, sizes, colors, images, price,   })=>{
 
 
-    const [image , setimage] = useState(images[colors[7]])
+    const [image , setimage] = useState(images[colors[0]])
 
 const HandleChangeImage = (color : string)=>{ 
 if( color === "blue"  ){
 setimage(
-    images[color[4]]
+    images[colors[1]]
 )
 }
 
 if(color === "red"){
-setimage(images[color[6]])
+setimage(images[colors[2]])
 }
 
 if(color === "pink"){
-setimage( images[color[6]])
+setimage( images[colors[3]])
 }
 }
 
