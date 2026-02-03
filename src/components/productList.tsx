@@ -1,8 +1,9 @@
-
+"use client"
 import ProductCard from "./productCard";
 import Categories from "./categories"
-import { productTypes } from "../../../types/types"
-
+import { productTypes } from "../../types/types"
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 const product: productTypes[] =  [
   {
     id: 1,
@@ -117,7 +118,11 @@ const product: productTypes[] =  [
    
   
  
-const ProductList = ()=>{
+const ProductList = ({parms} : {parms: "homepage" | "productPage"})=>{
+
+const category = useSearchParams()
+
+category.get("category")
     return (
         <div className="w-full ">
             <Categories/>
@@ -125,6 +130,7 @@ const ProductList = ()=>{
 
     {product.map((prod)=> <ProductCard key={prod.id} name={prod.name} shortDescription={prod.shortDescription} description={prod.description} colors={prod.colors} price={prod.price} images={prod.images} sizes={prod.sizes} id={prod.id} />)}
      </div>
+     <Link href={category ? `/products/?${category}` : "/products"} className="flex justify-end underline text-sm text-gray-500"> view all products</Link>
         </div>
     )
 }

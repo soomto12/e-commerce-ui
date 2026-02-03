@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import React from "react"
-import { productTypes } from "../../../types/types"
+import { productTypes } from "../../types/types"
 import Link from "next/link"
 import Image from "next/image"
 import { ShoppingBagIcon } from "lucide-react"
