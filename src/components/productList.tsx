@@ -4,6 +4,7 @@ import Categories from "./categories"
 import { productTypes } from "../../types/types"
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Filter } from "./filter";
 const product: productTypes[] =  [
   {
     id: 1,
@@ -20,6 +21,8 @@ const product: productTypes[] =  [
       purple: "/products/1p.png",
       green: "/products/1gr.png",
     },
+
+
   },
   {
     id: 2,
@@ -126,6 +129,7 @@ category.get("category")
     return (
         <div className="w-full ">
             <Categories/>
+            {parms === "productPage" && <Filter/>}
 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12 mt-20">
 
     {product.map((prod)=> <ProductCard key={prod.id} name={prod.name} shortDescription={prod.shortDescription} description={prod.description} colors={prod.colors} price={prod.price} images={prod.images} sizes={prod.sizes} id={prod.id} />)}

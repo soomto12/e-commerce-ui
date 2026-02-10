@@ -9,3 +9,5 @@ colors: string[],
 images: Record<string, string>
 }
 
+export type  CartType =  productTypes & { qunatity : number, selectedSize : String, selectedcolor : string}
+  
