@@ -1,9 +1,10 @@
-"use client"
-import { useParams, useRouter, useSearchParams } from "next/navigation"
-import { CartType } from "../../../types/types"
-import ShoppingCart from "@/components/CartItem"
+import { CartType } from "../../types/types"
+import CartItemDetails from "./CartItemDetails"
 
-// cartDummyData
+
+
+
+
 const CartItem : CartType[] = [
      {
     id: 1,
@@ -64,66 +65,75 @@ qunatity: 1
  }
 ]
 
-const step = [{
-  id:1,
-  title : "shopping Cart"
-},
-{
-  id:2,
-  title: "shipping Method",
 
-},
-{
-id:3,
-title: "payment Method"
-}
-
-]
+const ShoppingCart = ()=>{
 
 
-const Cart = ()=>{
-
-const useParams = useSearchParams();
-const router = useRouter()
 
 
-const activestep = parseInt(useParams.get("step") || '1' ) 
 
-    return(
-        <>
-        
-<div className="flex flex-col justify-center gap-4 items-center mt-8" id="header">
 
-<h1 className="text-2xl font-medium"> Your Shopping cart</h1>
-<div className="flex md:flex-row  "> 
 
-     <div className="flex md:flex-row flex-col justify-center gap-7 text-xl">
-      {step.map((steps)=> (
-<div className={`flex flex-row gap-6 border-b-2 pb-4 ${steps.id === activestep ? "border-black" : "border-gray-300"}`} key={steps.id}>
-<div className={`w-4 h-4 flex items-center text-white rounded-full justify-center p-4 ${steps.id === activestep ? "bg-black" : "bg-gray-200"} `}> {steps.id}</div>
-<p> {steps.title}</p>
+    return  (
+        <div className="flex flex-row ">
+            {/* cart Item */}
+            
+          <div className="   shadow-2xl  rounded-l-sm py-2 px-3 w-150 m-3 ">
+<h1 className="text-lg font-bold"> Cart items</h1>
+{CartItem.map((item) => {
+
+  return (
+    <CartItemDetails
+      key={item.id}
+      image={item.images[0]}
+      title={item.name}
+      qunatity={item.qunatity}
+      price={item.price}
+      color={item.selectedcolor}
+    />
+  );
+})}
+
+
+
+
+          </div>
+<div className="w-100 flex flex-col  h-70 ml-8 p-5 gap-4 rounded-2xl shadow-lg mt-5">
+<h2> Cart details</h2>
+<div className="flex flex-row justify-between">
+<p> supplier</p>
+<p> 300</p>
+
+</div>
+<div className="flex flex-row justify-between">
+<p> discount</p>
+<p> 0</p>
+
+</div>
+<div className="flex flex-row justify-between">
+<p>shopping fee</p>
+
+<p> 30</p>
+
+</div>
+<div className="flex flex-row justify-between">
+<p>total</p>
+
+<p> 1000</p>
+
+</div>
+<div className="w-full rounded-xl bg-black hover:bg-gray-900 py-2 justify-center text-white flex"> 
+  <p> Continue</p> 
+</div>
+  
+
 </div>
 
-      ))
-        
-      }
-     
-     </div>
-    
-     
-</div>
- {/* step& details */}
-<div className=" w-full flex flex-col md:flex-row"> 
-  {activestep === 2 && <ShoppingCart/> }
 
-     </div>
-</div>
-        
-        </>
+
+
+        </div>
     )
 }
 
-
-
-
-export default Cart
+export default ShoppingCart
