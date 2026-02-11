@@ -39,7 +39,7 @@ return (
 <div className="flex flex-col gap-1">
 <span className="text-gray-500 "> Size</span>
 <select name="size" id="size" className="ring rounded-md px-2 py-1 " onChange={(e)=>handleProducChange("size", e.target.value)}>
-    {sizes.map((size)=> <option value={size} className="bg-gray-300">
+    {sizes.map((i,size)=> <option key={i} value={size} className="bg-gray-300">
 {size}
     </option>)}
 </select>
@@ -47,7 +47,7 @@ return (
 <div className="flex flex-row gap-4" id="color">
     <span> colour</span>
 {colors.map((colors)=> <div key={colors} >
-    <div  className= "w-[14px] h-[14px] rounded-full" style={{backgroundColor: colors}} onClick={()=>handleProducChange("color", colors)} > </div>
+    <div  className= " rounded-full" style={{backgroundColor: colors}} onClick={()=>handleProducChange("color", colors)} > </div>
       </div> )}
 </div>
 </div>

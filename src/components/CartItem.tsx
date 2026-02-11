@@ -1,3 +1,6 @@
+"use client"
+
+import { useRouter } from "next/navigation"
 import { CartType } from "../../types/types"
 import CartItemDetails from "./CartItemDetails"
 
@@ -67,18 +70,21 @@ qunatity: 1
 
 
 const ShoppingCart = ()=>{
+  const router = useRouter()
 
+function ChangeStep(){
 
-
+  router.push("/cart?step=2")
+}
 
 
 
 
     return  (
-        <div className="flex flex-row ">
+        <div className="flex flex-col md:flex-row ">
             {/* cart Item */}
             
-          <div className="   shadow-2xl  rounded-l-sm py-2 px-3 w-150 m-3 ">
+          <div className="   shadow-sm  rounded-sm py-2 px-3 w-150 m-3 ">
 <h1 className="text-lg font-bold"> Cart items</h1>
 {CartItem.map((item) => {
 
@@ -123,7 +129,7 @@ const ShoppingCart = ()=>{
 
 </div>
 <div className="w-full rounded-xl bg-black hover:bg-gray-900 py-2 justify-center text-white flex"> 
-  <p> Continue</p> 
+  <p onClick={ChangeStep} > Continue</p> 
 </div>
   
 

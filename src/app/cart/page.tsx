@@ -2,6 +2,7 @@
 import { useParams, useRouter, useSearchParams } from "next/navigation"
 import { CartType } from "../../../types/types"
 import ShoppingCart from "@/components/CartItem"
+import ShippingAdress from "@/components/ShippingAdress"
 
 // cartDummyData
 const CartItem : CartType[] = [
@@ -114,8 +115,8 @@ const activestep = parseInt(useParams.get("step") || '1' )
 </div>
  {/* step& details */}
 <div className=" w-full flex flex-col md:flex-row"> 
-  {activestep === 2 && <ShoppingCart/> }
-
+  {activestep === 1 && <ShoppingCart/> }
+{activestep ===2 && <ShippingAdress/>}
      </div>
 </div>
         

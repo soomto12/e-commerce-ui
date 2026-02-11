@@ -4,7 +4,7 @@ const Homepage = () => {
   return (
     <div>
 <ImageHeader/>
-    <div className="">
+    <div >
 
       <ProductList parms="homepage" />
     </div>
