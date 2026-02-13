@@ -5,9 +5,13 @@ import { productTypes } from "../../types/types"
 import Link from "next/link"
 import Image from "next/image"
 import { ShoppingBagIcon } from "lucide-react"
+import { useDispatch } from "react-redux"
+import { addItemToCart } from "../../store/CartSlice"
 
 
 const ProductCard : React.FC <productTypes> = ({id, name, shortDescription, description, sizes, colors, images, price,   })=>{
+let qunatity = 1
+    const dispatch = useDispatch()
 
     const [productTypes, setProductTypes] = useState({
         size: sizes[0],
@@ -22,6 +26,12 @@ setProductTypes( pre=>({
 
 )
 }
+
+
+function AddItemtoCart (){
+dispatch(addItemToCart({id,name,shortDescription,price,productTypes,images,qunatity }))
+}
+
 
 
 return (
@@ -55,7 +65,7 @@ return (
   </div>
   <div className="flex items-center justify-between my-3 mx-4">
 <p className="font-medium "> ${price.toFixed(2)} </p>
-<button className="bg-gray-300 ring-1 ring-gray-200 rounded-md px-2 py-1 cursor-pointer hover:text-white hover:bg-black flex flex-row gap-2">
+<button className="bg-gray-300 ring-1 ring-gray-200 rounded-md px-2 py-1 cursor-pointer hover:text-white hover:bg-black flex flex-row gap-2" onClick={AddItemtoCart}>
     <ShoppingBagIcon className="w-4 h-4"/>
      Add to Cart</button>
   </div>

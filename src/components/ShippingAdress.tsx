@@ -1,3 +1,4 @@
+"use client"
 import UserInput from "./UserInput"
 import { ShippingFormInput  } from "../../types/types"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -5,27 +6,28 @@ import { useForm,SubmitHandler } from "react-hook-form"
 import { ShippingformSchma } from "../../types/types"
 import { useState } from "react"
 import { Message } from "./Error"
+
+
 const ShippingAdress = ()=>{
-
-
 const {register, handleSubmit, formState: {errors}} = useForm<ShippingFormInput>({
     resolver: zodResolver(ShippingformSchma)
 })
 
-const [shippingForm, setShippingform] = useState <ShippingFormInput>()
-
-
+ const [shippingForm, setShippingform] = useState <ShippingFormInput>({
+    name:"",
+    email:"",
+    phoneNumber:"",
+    address:"",
+    city:""
+})
 const handleSubmitForm: SubmitHandler<ShippingFormInput> = (data)=>{
 setShippingform(data)
-console.log(shippingForm)
+
 }
 
-
+console.log(shippingForm)
 
     return(
-       
-
-        
        <div  className="flex flex-col md:flex-row gap-3">
             <div className="w-150 shadow-2xl rounded-2xl border-0 p-4">
                

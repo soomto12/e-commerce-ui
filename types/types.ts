@@ -1,4 +1,5 @@
-  import z from "zod"
+  // i need to write the regex code later
+import z, { } from "zod"
   
   export interface productTypes {
 id : string | number,
@@ -12,7 +13,11 @@ images: Record<string, string>
 }
 
 
-
+export type CartType = productTypes & {
+   qunatity: number,
+    selectedcolor:string,
+    selectedSize: string
+}
 
 
 
@@ -25,3 +30,20 @@ city:z.string().min(1, "city is required")
 }) 
  
  export  type ShippingFormInput  = z.infer<typeof ShippingformSchma>
+
+
+ export const PaymentSchema  = z.object({
+  name: z.string().min(1, "card name is required"),
+  cardNumber: z.string().min(16, "card number is required").max(16, "Card numeber is required"),
+  expirationDate : z.string().min(3, "Cvv is required").max(3, "Cvv is required")
+
+ })
+
+
+ export type paymentMethod = z.infer<typeof PaymentSchema>
+
+export interface CartItem  {
+  item :CartType[]
+}
+
+

@@ -1,76 +1,15 @@
 "use client"
-
-import { useRouter } from "next/navigation"
 import { CartType } from "../../types/types"
+import { useRouter } from "next/navigation"
+import { useSelector } from "react-redux"
 import CartItemDetails from "./CartItemDetails"
 
 
 
 
-
-const CartItem : CartType[] = [
-     {
-    id: 1,
-    name: "Adidas CoreFit T-Shirt",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    price: 39.9,
-    sizes: ["s", "m", "l", "xl", "xxl"],
-    colors: ["gray", "purple", "green"],
-    images: {
-      gray: "/products/1g.png",
-      purple: "/products/1p.png",
-      green: "/products/1gr.png",
-    },
-    qunatity: 1,
-    selectedcolor:"gray",
-    selectedSize:"m"
-
-
-  },
- {
-      id: 2,
-    name: "Puma Ultra Warm Zip",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    price: 59.9,
-    sizes: ["s", "m", "l", "xl"],
-    colors: ["gray", "green"],
-    images: { gray: "/products/2g.png", green: "/products/2gr.png" },
-selectedcolor: "black",
-selectedSize:"l",
-qunatity: 1
-
-  },
-
- {
-    id: 3,
-    name: "Nike Air Essentials Pullover",
-    shortDescription:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    description:
-      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
-    price: 69.9,
-    sizes: ["s", "m", "l"],
-    colors: ["green", "blue", "black"],
-    images: {
-      green: "/products/3gr.png",
-      blue: "/products/3b.png",
-      black: "/products/3bl.png",
-    },
-    qunatity:3,
-    selectedcolor:"gray",
-    selectedSize:"m"
- }
-]
-
-
 const ShoppingCart = ()=>{
   const router = useRouter()
+  const cartItem = useSelector((state:any)=> state.cart.item)
 
 function ChangeStep(){
 
@@ -86,7 +25,7 @@ function ChangeStep(){
             
           <div className="   shadow-sm  rounded-sm py-2 px-3 w-150 m-3 ">
 <h1 className="text-lg font-bold"> Cart items</h1>
-{CartItem.map((item) => {
+{cartItem.map((item:CartType) => {
 
   return (
     <CartItemDetails
