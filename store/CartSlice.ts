@@ -1,13 +1,15 @@
-import { CartItem } from "../types/types";
+import { CartItems } from "../types/types";
 import { createSlice } from "@reduxjs/toolkit";
 
-const InitialCart : CartItem= {
-    item  : []
-}
+
+const items : CartItems = []
+
 
 
  export const  cartSlice = createSlice({
-    initialState: InitialCart,
+    initialState: {
+        item :items
+    },
     name: "cart",
     reducers:{
         addItemToCart : (state, action)=>{

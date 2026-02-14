@@ -29,7 +29,7 @@ setProductTypes( pre=>({
 
 
 function AddItemtoCart (){
-dispatch(addItemToCart({id,name,shortDescription,price,productTypes,images,qunatity }))
+dispatch(addItemToCart({id: id, image:images[productTypes.color], size: productTypes.size, color:productTypes.color, qunatity, price:price}))
 }
 
 
@@ -56,9 +56,21 @@ return (
 </div>
 <div className="flex flex-row gap-4" id="color">
     <span> colour</span>
-{colors.map((colors)=> <div key={colors} >
-    <div  className= " rounded-full" style={{backgroundColor: colors}} onClick={()=>handleProducChange("color", colors)} > </div>
-      </div> )}
+<div className="flex gap-2">
+    {colors.map((color) => (
+      <button
+        key={color}
+        type="button"
+        aria-label={color}
+        aria-pressed={productTypes.color === color}
+        onClick={() => handleProducChange("color", color)}
+        style={{ backgroundColor: color }}
+        className={`w-7 h-7 rounded-full border-2 transition-transform transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-black
+          ${productTypes.color === color ? "ring-2 ring-offset-1 ring-black shadow-md" : "border-transparent"}`}
+      />
+    ))}
+  </div>
+     
 </div>
 </div>
 

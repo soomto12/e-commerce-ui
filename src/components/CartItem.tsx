@@ -1,15 +1,15 @@
 "use client"
-import { CartType } from "../../types/types"
+
 import { useRouter } from "next/navigation"
 import { useSelector } from "react-redux"
 import CartItemDetails from "./CartItemDetails"
-
+import { ShoppingCarts } from "../../types/types"
 
 
 
 const ShoppingCart = ()=>{
   const router = useRouter()
-  const cartItem = useSelector((state:any)=> state.cart.item)
+  const cartItem = useSelector((state : any)=> state.cart.item)
 
 function ChangeStep(){
 
@@ -23,18 +23,20 @@ function ChangeStep(){
         <div className="flex flex-col md:flex-row ">
             {/* cart Item */}
             
-          <div className="   shadow-sm  rounded-sm py-2 px-3 w-150 m-3 ">
+          <div className="   shadow-sm  rounded-sm py-2 px-3 w-150 m-3 space-y-4">
 <h1 className="text-lg font-bold"> Cart items</h1>
-{cartItem.map((item:CartType) => {
+{cartItem.map((item:ShoppingCarts) => {
 
   return (
     <CartItemDetails
+    id={item.id}
       key={item.id}
-      image={item.images[0]}
-      title={item.name}
+      image={item.image}
+      title={item.title}
       qunatity={item.qunatity}
       price={item.price}
-      color={item.selectedcolor}
+      color={item.color}
+      size={item.size}
     />
   );
 })}

@@ -13,11 +13,7 @@ images: Record<string, string>
 }
 
 
-export type CartType = productTypes & {
-   qunatity: number,
-    selectedcolor:string,
-    selectedSize: string
-}
+
 
 
 
@@ -42,8 +38,19 @@ city:z.string().min(1, "city is required")
 
  export type paymentMethod = z.infer<typeof PaymentSchema>
 
-export interface CartItem  {
-  item :CartType[]
+
+
+ export type CartItems =ShoppingCarts []
+
+
+ 
+export interface ShoppingCarts  {
+  id: number
+image : string,
+qunatity: number,
+color : string,
+price: number,
+title : string
+size: string
+
 }
-
-
