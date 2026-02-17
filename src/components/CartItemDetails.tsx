@@ -1,10 +1,19 @@
 
 
-
+import { useDispatch} from "react-redux"
 import Image from "next/image"
 import { ShoppingCarts } from "../../types/types"
 
-const CartItemDetails = ({ image, title, qunatity, price, color, size }: ShoppingCarts) => {
+import { removeCartItem } from "../../store/CartSlice"
+
+const CartItemDetails = ({ image, title, qunatity, price, color, size,id }: ShoppingCarts) => {
+     const dipatch = useDispatch()
+
+
+     function RemoveItemHandler(){
+      dipatch(removeCartItem({id, size, qunatity,price,color,image}))
+     }
+
   return (
     <div className="flex items-start gap-4 p-3 bg-white rounded-lg shadow-sm border min-w-0">
       <div className="w-20 h-20 rounded-md overflow-hidden flex-shrink-0 border bg-gray-50">
@@ -40,7 +49,7 @@ const CartItemDetails = ({ image, title, qunatity, price, color, size }: Shoppin
         </div>
 
         <div className="mt-3 flex items-center gap-3">
-          <button className="text-xs text-gray-600 hover:text-red-600">Remove</button>
+          <button className="text-xs text-gray-600 hover:text-red-600" onClick={RemoveItemHandler}>Remove</button>
           <button className="text-xs text-gray-600 hover:underline">Save for later</button>
         </div>
       </div>

@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux"
 import { addItemToCart } from "../../store/CartSlice"
 
 
+
 const ProductCard : React.FC <productTypes> = ({id, name, shortDescription, description, sizes, colors, images, price,   })=>{
 let qunatity = 1
     const dispatch = useDispatch()
@@ -29,7 +30,7 @@ setProductTypes( pre=>({
 
 
 function AddItemtoCart (){
-dispatch(addItemToCart({id: id, image:images[productTypes.color], size: productTypes.size, color:productTypes.color, qunatity, price:price}))
+dispatch(addItemToCart({id: id, image:images[productTypes.color], size: productTypes.size, color:productTypes.color, qunatity, price:price, title:name}))
 }
 
 

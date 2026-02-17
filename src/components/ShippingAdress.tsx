@@ -4,7 +4,7 @@ import { ShippingFormInput  } from "../../types/types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm,SubmitHandler } from "react-hook-form"
 import { ShippingformSchma } from "../../types/types"
-import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Message } from "./Error"
 
 
@@ -12,20 +12,13 @@ const ShippingAdress = ()=>{
 const {register, handleSubmit, formState: {errors}} = useForm<ShippingFormInput>({
     resolver: zodResolver(ShippingformSchma)
 })
+const router = useRouter()
 
- const [shippingForm, setShippingform] = useState <ShippingFormInput>({
-    name:"",
-    email:"",
-    phoneNumber:"",
-    address:"",
-    city:""
-})
 const handleSubmitForm: SubmitHandler<ShippingFormInput> = (data)=>{
-setShippingform(data)
-
+router.push("/cart?step=3")
 }
 
-console.log(shippingForm)
+
 
     return(
        <div  className="flex flex-col md:flex-row gap-3">

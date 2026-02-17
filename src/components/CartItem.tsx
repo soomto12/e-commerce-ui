@@ -30,7 +30,7 @@ function ChangeStep(){
   return (
     <CartItemDetails
     id={item.id}
-      key={item.id}
+      key={item.id + item.size + item.color}
       image={item.image}
       title={item.title}
       qunatity={item.qunatity}
@@ -69,9 +69,9 @@ function ChangeStep(){
 <p> 1000</p>
 
 </div>
-<div className="w-full rounded-xl bg-black hover:bg-gray-900 py-2 justify-center text-white flex"> 
-  <p onClick={ChangeStep} > Continue</p> 
-</div>
+
+  <p onClick={ChangeStep} className="w-full rounded-xl bg-black hover:bg-gray-900 py-2 justify-center text-white flex cursor-pointer"> Continue</p> 
+
   
 
 </div>
