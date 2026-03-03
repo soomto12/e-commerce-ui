@@ -28,9 +28,8 @@ const existingItem = state.item.find((item)=>
 
      if (existingItem?.qunatity === 1) {
                 state.item = state.item.filter((item) =>
-                    item.id !== action.payload.id || 
-                    item.size !== action.payload.size || 
-                    item.color !== action.payload.color
+                    item.id !== action.payload.id || item.size !== action.payload.size || item.color!== action.payload.color
+                  
                 )
             } else if (existingItem) {
                 existingItem.qunatity--

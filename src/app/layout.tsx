@@ -3,10 +3,8 @@ import type { Metadata } from "next";
 import { Layout } from "@/components/layout";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import NavBar from "../components/navBar";
-import  Footer  from "../components/footer";
-import { Provider } from "react-redux";
-import { store } from "../../store";
+import { ClerkProvider } from "@clerk/nextjs";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
+
+   
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -41,5 +42,6 @@ export default function RootLayout({
         
       </body>
     </html>
+     </ClerkProvider>
   );
 }

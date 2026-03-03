@@ -77,7 +77,7 @@ router.push(`${pathName}?${parms.toString()}`)
 
     return (
         <div className=" grid sm:grid-col-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-5 bg-gray-100 p-2 rounded-lg mt-4 text-sm" >
-{categories.map((item,idex)=> <div key={idex}className={`flex flex-row items-center p-2 justify-center rounded-lg gap-3  ${item.slug === selectedCatrgory ? "bg-white" : null}`} onClick={()=> handleChange(item.slug)}> 
+{categories.map((item)=> <div key={item.name}className={`flex flex-row items-center p-2 justify-center rounded-lg gap-3 cursor-pointer  ${item.slug === selectedCatrgory ? "bg-white" : null}`} onClick={()=> handleChange(item.slug)}> 
     {item.name}
     {item.icon}
     

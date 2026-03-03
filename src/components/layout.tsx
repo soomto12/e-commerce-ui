@@ -3,9 +3,12 @@ import { store } from "../../store"
 import { Provider } from "react-redux"
 import NavBar from "./navBar"
 import Footer from "./footer"
+
  export const Layout = ({children} : any)=>{
     return(
         <>
+     
+
         
        <Provider store={store}>
 
@@ -20,6 +23,7 @@ import Footer from "./footer"
 <Footer/>
         </div>
          </Provider>
+      \
         </>
     )
 }
